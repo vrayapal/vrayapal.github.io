@@ -24,7 +24,7 @@
   /* Choose your animation effect! Uncomment one of the following lines. */
   
   /* Text glow */
-  .animated-title {
+  /*.animated-title {
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
     animation: glow 2s ease-in-out infinite alternate;
   }
@@ -39,10 +39,10 @@
     100% {
       text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
     }
-  }
+  }*/
   
   /* Text shadow */
-  /*.animated-title {
+  .animated-title {
     text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     animation: shadow 2s ease-in-out infinite alternate;
   }
