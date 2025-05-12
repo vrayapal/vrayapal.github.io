@@ -4,7 +4,98 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Varshit Rayapalli | Engineering Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #e0dfd5;
+      color: #2e2f2f;
+    }
+    header {
+      background-color: #051014;
+      color: #e8e9eb;
+      padding: 2rem;
+      text-align: center;
+    }
+    a {
+      color: #508484;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    section {
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+    h2 {
+      color: #051014;
+      border-bottom: 2px solid #508484;
+      padding-bottom: 0.5rem;
+    }
+    ul {
+      padding-left: 1.2rem;
+    }
+    footer {
+      background-color: #051014;
+      color: #e8e9eb;
+      text-align: center;
+      padding: 1rem;
+    }
+    .about-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+    }
+    .about-container img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #508484;
+    }
+    .about-container div {
+      flex: 1;
+    }
+    .slideshow-container {
+      position: relative;
+      max-width: 100%;
+      margin: auto;
+    }
+    .slide {
+      display: none;
+      text-align: center;
+    }
+    .slide img {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border: 2px solid #508484;
+    }
+    .slide p {
+      padding: 1rem;
+    }
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      padding: 16px;
+      margin-top: -22px;
+      color: #e8e9eb;
+      font-weight: bold;
+      font-size: 18px;
+      background-color: rgba(5, 16, 20, 0.5);
+      user-select: none;
+      border-radius: 0 3px 3px 0;
+    }
+    .next {
+      right: 0;
+      border-radius: 3px 0 0 3px;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -19,11 +110,10 @@
       <div>
         <p>
           I’m a Mechanical Engineering student at the University of North Carolina at Charlotte, minoring in Mathematics. 
-          I'm passionate about systems design, prototyping, and collaborative problem-solving. I have experience in CAD, electronics, 
-          and cross-functional team leadership through robotics, internships, and lab work.
+          I'm passionate about systems design, prototyping, and collaborative problem-solving. I have experience in CAD, electronics, and cross-functional team leadership through robotics, internships, and lab work.
         </p>
       </div>
-      <img src="profile.jpg" alt="Varshit Rayapalli">
+      <img src="profile.png" alt="Varshi Rayapalli">
     </div>
   </section>
 
@@ -77,11 +167,6 @@
       <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
       <a class="next" onclick="plusSlides(1)">&#10095;</a>
     </div>
-    <div class="dots-container">
-      <span class="dot active" onclick="currentSlide(0)"></span>
-      <span class="dot" onclick="currentSlide(1)"></span>
-      <span class="dot" onclick="currentSlide(2)"></span>
-    </div>
   </section>
 
   <section>
@@ -100,14 +185,9 @@
   <script>
     let slideIndex = 0;
     const slides = document.getElementsByClassName("slide");
-    const dots = document.getElementsByClassName("dot");
 
     function plusSlides(n) {
       showSlides(slideIndex += n);
-    }
-
-    function currentSlide(n) {
-      showSlides(slideIndex = n);
     }
 
     function showSlides(n) {
@@ -115,13 +195,9 @@
       if (n < 0) slideIndex = slides.length - 1;
       for (let i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";
-        dots[i].classList.remove("active");
       }
       slides[slideIndex].style.display = "block";
-      dots[slideIndex].classList.add("active");
     }
-
-    showSlides(slideIndex);
   </script>
 </body>
 </html>
