@@ -43,6 +43,58 @@
       text-align: center;
       padding: 1rem;
     }
+    .about-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+    }
+    .about-container img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #508484;
+    }
+    .about-container div {
+      flex: 1;
+    }
+    .slideshow-container {
+      position: relative;
+      max-width: 100%;
+      margin: auto;
+    }
+    .slide {
+      display: none;
+      text-align: center;
+    }
+    .slide img {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border: 2px solid #508484;
+    }
+    .slide p {
+      padding: 1rem;
+    }
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      padding: 16px;
+      margin-top: -22px;
+      color: #e8e9eb;
+      font-weight: bold;
+      font-size: 18px;
+      background-color: rgba(5, 16, 20, 0.5);
+      user-select: none;
+      border-radius: 0 3px 3px 0;
+    }
+    .next {
+      right: 0;
+      border-radius: 3px 0 0 3px;
+    }
   </style>
 </head>
 <body>
@@ -54,11 +106,16 @@
 
   <section>
     <h2>About Me</h2>
-    <p>
-      I’m a Mechanical Engineering student at the University of North Carolina at Charlotte, minoring in Mathematics. 
-      I'm passionate about systems design, prototyping, and collaborative problem-solving. I have experience in CAD, electronics, 
-      and cross-functional team leadership through robotics, internships, and lab work.
-    </p>
+    <div class="about-container">
+      <img src="profile.png" alt="Varshit Rayapalli">
+      <div>
+        <p>
+          I’m a Mechanical Engineering student at the University of North Carolina at Charlotte, minoring in Mathematics. 
+          I'm passionate about systems design, prototyping, and collaborative problem-solving. I have experience in CAD, electronics, 
+          and cross-functional team leadership through robotics, internships, and lab work.
+        </p>
+      </div>
+    </div>
   </section>
 
   <section>
@@ -94,6 +151,26 @@
   </section>
 
   <section>
+    <h2>Projects</h2>
+    <div class="slideshow-container">
+      <div class="slide" style="display: block;">
+        <img src="project1.jpg" alt="Project 1">
+        <p><strong>Project 1:</strong> Custom robotics chassis with modular component bays and integrated cable routing.</p>
+      </div>
+      <div class="slide">
+        <img src="project2.jpg" alt="Project 2">
+        <p><strong>Project 2:</strong> CNC-milled aluminum drivetrain prototype designed for mechanical testing efficiency.</p>
+      </div>
+      <div class="slide">
+        <img src="project3.jpg" alt="Project 3">
+        <p><strong>Project 3:</strong> IoT-enabled environmental sensor housing developed during internship at Corning.</p>
+      </div>
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+  </section>
+
+  <section>
     <h2>Extracurricular Activities</h2>
     <ul>
       <li>Institute of Electrical and Electronics Engineers (IEEE)</li>
@@ -105,5 +182,23 @@
   <footer>
     <p>&copy; 2025 Varshit Rayapalli | Built with HTML & CSS</p>
   </footer>
+
+  <script>
+    let slideIndex = 0;
+    const slides = document.getElementsByClassName("slide");
+
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    function showSlides(n) {
+      if (n >= slides.length) slideIndex = 0;
+      if (n < 0) slideIndex = slides.length - 1;
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slides[slideIndex].style.display = "block";
+    }
+  </script>
 </body>
 </html>
