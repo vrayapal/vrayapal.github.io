@@ -1,108 +1,122 @@
+/* Color Palette */
+:root {
+  --rich-black: #051014;
+  --jet: #2e2f2f;
+  --alabaster: #e0dfd5;
+  --anti-flash-white: #e8e9eb;
+  --myrtle: #508484;
+}
+
 body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background-color: #e0dfd5;
-      color: #2e2f2f;
-    }
-    header {
-      background-color: #051014;
-      color: #e8e9eb;
-      padding: 2rem;
-      text-align: center;
-    }
-    a {
-      color: #508484;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    section {
-      padding: 2rem;
-      max-width: 900px;
-      margin: auto;
-    }
-    h2 {
-      color: #051014;
-      border-bottom: 2px solid #508484;
-      padding-bottom: 0.5rem;
-    }
-    ul {
-      padding-left: 1.2rem;
-    }
-    footer {
-      background-color: #051014;
-      color: #e8e9eb;
-      text-align: center;
-      padding: 1rem;
-    }
-    .about-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      align-items: center;
-      flex-direction: row-reverse;
-    }
-    .about-container img {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid #508484;
-    }
-    .about-container div {
-      flex: 1;
-    }
-    .slideshow-container {
-      position: relative;
-      max-width: 100%;
-      margin: auto;
-    }
-    .slide {
-      display: none;
-      text-align: center;
-    }
-    .slide img {
-      width: 100%;
-      max-height: 400px;
-      object-fit: cover;
-      border: 2px solid #508484;
-    }
-    .slide p {
-      padding: 1rem;
-    }
-    .prev, .next {
-      cursor: pointer;
-      position: absolute;
-      top: 50%;
-      width: auto;
-      padding: 16px;
-      margin-top: -22px;
-      color: #e8e9eb;
-      font-weight: bold;
-      font-size: 18px;
-      background-color: rgba(5, 16, 20, 0.5);
-      user-select: none;
-      border-radius: 0 3px 3px 0;
-    }
-    .next {
-      right: 0;
-      border-radius: 3px 0 0 3px;
-    }
-    .dots-container {
-      text-align: center;
-      margin-top: 1rem;
-    }
-    .dot {
-      height: 12px;
-      width: 12px;
-      margin: 0 4px;
-      background-color: #bbb;
-      border-radius: 50%;
-      display: inline-block;
-      transition: background-color 0.3s ease;
-      cursor: pointer;
-    }
-    .dot.active {
-      background-color: #508484;
-    }
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--anti-flash-white);
+  color: var(--rich-black);
+}
+
+header {
+  background-color: var(--jet);
+  color: var(--alabaster);
+  text-align: center;
+  padding: 1rem 0;
+}
+
+header a {
+  color: var(--myrtle);
+  text-decoration: none;
+}
+
+section {
+  padding: 2rem;
+  border-bottom: 1px solid var(--jet);
+}
+
+h1, h2, h3 {
+  color: var(--rich-black);
+}
+
+.about-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.about-container img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--myrtle);
+}
+
+.slideshow-container {
+  position: relative;
+  max-width: 100%;
+  margin: auto;
+}
+
+.slide {
+  display: none;
+  text-align: center;
+}
+
+.slide img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  border: 2px solid var(--jet);
+}
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  color: var(--jet);
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+  background-color: var(--myrtle);
+  color: var(--alabaster);
+}
+
+.dots-container {
+  text-align: center;
+  padding: 1rem;
+}
+
+.dot {
+  cursor: pointer;
+  height: 12px;
+  width: 12px;
+  margin: 0 5px;
+  background-color: var(--jet);
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+.dot.active, .dot:hover {
+  background-color: var(--myrtle);
+}
+
+footer {
+  background-color: var(--jet);
+  color: var(--alabaster);
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: 2rem;
+}
