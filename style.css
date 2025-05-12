@@ -18,7 +18,7 @@ header {
   background-color: var(--jet);
   color: var(--alabaster);
   text-align: center;
-  padding: 1rem 0;
+  padding: 1rem;
 }
 
 header a {
