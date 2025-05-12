@@ -48,6 +48,7 @@
       flex-wrap: wrap;
       gap: 2rem;
       align-items: center;
+      flex-direction: row-reverse;
     }
     .about-container img {
       width: 160px;
@@ -95,6 +96,23 @@
       right: 0;
       border-radius: 3px 0 0 3px;
     }
+    .dots-container {
+      text-align: center;
+      margin-top: 1rem;
+    }
+    .dot {
+      height: 12px;
+      width: 12px;
+      margin: 0 4px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+    }
+    .dot.active {
+      background-color: #508484;
+    }
   </style>
 </head>
 <body>
@@ -107,13 +125,14 @@
   <section>
     <h2>About Me</h2>
     <div class="about-container">
+      <img src="profile.jpg" alt="Varshit Rayapalli">
       <div>
         <p>
           I’m a Mechanical Engineering student at the University of North Carolina at Charlotte, minoring in Mathematics. 
-          I'm passionate about systems design, prototyping, and collaborative problem-solving. I have experience in CAD, electronics, and cross-functional team leadership through robotics, internships, and lab work.
+          I'm passionate about systems design, prototyping, and collaborative problem-solving. I have experience in CAD, electronics, 
+          and cross-functional team leadership through robotics, internships, and lab work.
         </p>
       </div>
-      <img src="profile.png" alt="Varshi Rayapalli">
     </div>
   </section>
 
@@ -167,6 +186,11 @@
       <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
       <a class="next" onclick="plusSlides(1)">&#10095;</a>
     </div>
+    <div class="dots-container">
+      <span class="dot active" onclick="currentSlide(0)"></span>
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+    </div>
   </section>
 
   <section>
@@ -185,9 +209,14 @@
   <script>
     let slideIndex = 0;
     const slides = document.getElementsByClassName("slide");
+    const dots = document.getElementsByClassName("dot");
 
     function plusSlides(n) {
       showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+      showSlides(slideIndex = n);
     }
 
     function showSlides(n) {
@@ -195,9 +224,13 @@
       if (n < 0) slideIndex = slides.length - 1;
       for (let i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";
+        dots[i].classList.remove("active");
       }
       slides[slideIndex].style.display = "block";
+      dots[slideIndex].classList.add("active");
     }
+
+    showSlides(slideIndex);
   </script>
 </body>
 </html>
