@@ -46,7 +46,7 @@ h1, h2, h3 {
 .about-container img {
   width: 160px;
   height: 160px;
-  border-radius: 50%;
+  border-radius: 0%;
   object-fit: cover;
   border: 3px solid var(--myrtle);
 }
