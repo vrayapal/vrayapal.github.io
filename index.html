@@ -145,47 +145,93 @@
   </footer>
 
   <script>
-    // Define the images and captions manually
-    const projectImages = {
+    const projectMedia = {
       0: [
-        { src: "project0/img1.png", alt: "Senior Design 1", caption: "Caption for SD Image 1" },
-        { src: "project0/img2.png", alt: "Senior Design 2", caption: "Caption for SD Image 2" },
+        { type: "image", src: "project0/img1.png", alt: "Senior Design 1", caption: "CAD design overview" },
+        { type: "image", src: "project0/img2.png", alt: "Senior Design 1", caption: "CAD design overview" },
+        { type: "image", src: "project0/img3.png", alt: "Senior Design 1", caption: "CAD design overview" },
       ],
       1: [
-        { src: "project1/img1.png", alt: "Junior Design 1", caption: "Caption for JD Image 1" },
-        { src: "project1/img2.png", alt: "Junior Design 1", caption: "Caption for JD Image 1" },
-        { src: "project1/img3.png", alt: "Junior Design 1", caption: "Caption for JD Image 1" },
+        { type: "image", src: "project1/img1.png", alt: "Junior Design 1", caption: "Concept sketch" },
+        { type: "image", src: "project1/img2.png", alt: "Senior Design 1", caption: "CAD design overview" },
+        { type: "image", src: "project1/img3.png", alt: "Senior Design 1", caption: "CAD design overview" },
+        { type: "video", format: "mp4", src: "project1/vid1.mp4", alt: "Robot Demo", caption: "Robot performing a pick-and-place task."},
       ],
       2: [
-        { src: "project2/test gif.gif", alt: "Robot 24-25 - Frame", caption: "Initial frame design" },
-        { src: "project2/img2.png", alt: "Robot 24-25 - CAD", caption: "Full assembly CAD" },
-        { src: "project2/img3.png", alt: "Robot 24-25 - Test", caption: "Testing phase" },
+        { type: "image", src: "project2/test gif.gif", alt: "Frame", caption: "Frame assembly CAD" },
+        { type: "video", format: "mp4", src: "project2/vid1.mp4", alt: "Robot Demo", caption: "Robot performing a pick-and-place task."},
       ],
-      // Add additional entries for project 3, 4, 5 if needed
+      3: [
+        { type: "image", src: "project3/img1.png", alt: "Frame", caption: "Frame assembly CAD" },
+        { type: "image", src: "project3/img2.png", alt: "Frame", caption: "Frame assembly CAD" },
+        { type: "video", format: "youtube", src: "https://www.youtube.com/embed/V5ortYr-1dU?si=R_fwuGbO499Ooksa", alt: "Robot Demo", caption: "Robot performing a pick-and-place task."},
+
+      ],
+      4: [
+        { type: "image", src: "project4/img1.png", alt: "Frame", caption: "Frame assembly CAD" },
+        { type: "image", src: "project4/img2.png", alt: "Frame", caption: "Frame assembly CAD" },
+        { type: "image", src: "project4/img3.png", alt: "Frame", caption: "Frame assembly CAD" },
+        { type: "video", format: "mp4", src: "project4/vid1.mp4", alt: "Robot Demo", caption: "Robot performing a pick-and-place task."},
+        { type: "video", format: "mp4", src: "project4/vid2.mp4", alt: "Robot Demo", caption: "Robot performing a pick-and-place task."},
+      ],
+      5: [
+        { type: "image", src: "project2/test gif.gif", alt: "Frame", caption: "Frame assembly CAD" },
+        { type: "video", format: "youtube", src: "project0/demo.mp4", alt: "Robot Demo", caption: "Robot performing a pick-and-place task."},
+      ],
     };
 
-    function createSlide(src, alt, caption) {
+    function createSlide(media) {
       const slide = document.createElement("div");
       slide.className = "slide";
       slide.style.display = "none";
 
-      const img = document.createElement("img");
-      img.src = src;
-      img.alt = alt;
+      if (media.type === "image") {
+        const img = document.createElement("img");
+        img.src = media.src;
+        img.alt = media.alt;
 
-      const p = document.createElement("p");
-      p.innerHTML = `<strong>${alt}:</strong> ${caption}`;
+        const p = document.createElement("p");
+        p.innerHTML = `<strong>${media.alt}:</strong> ${media.caption}`;
 
-      slide.appendChild(img);
-      slide.appendChild(p);
+        slide.appendChild(img);
+        slide.appendChild(p);
+      } else if (media.type === "video") {
+        if (media.format === "youtube") {
+          const iframe = document.createElement("iframe");
+          iframe.width = "560";
+          iframe.height = "315";
+          iframe.src = media.src;
+          iframe.title = media.alt;
+          iframe.frameBorder = "0";
+          iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+          iframe.allowFullscreen = true;
+
+          const p = document.createElement("p");
+          p.innerHTML = `<strong>${media.alt}:</strong> ${media.caption}`;
+
+          slide.appendChild(iframe);
+          slide.appendChild(p);
+        } else if (media.format === "mp4") {
+          const video = document.createElement("video");
+          video.src = media.src;
+          video.controls = true;
+          video.width = 560;
+
+          const p = document.createElement("p");
+          p.innerHTML = `<strong>${media.alt}:</strong> ${media.caption}`;
+
+          slide.appendChild(video);
+          slide.appendChild(p);
+        }
+      }
+
       return slide;
     }
 
-    function setupSlideshow(container, images) {
-      const slides = images.map(imgData => createSlide(imgData.src, imgData.alt, imgData.caption));
+    function setupSlideshow(container, mediaItems) {
+      const slides = mediaItems.map(item => createSlide(item));
       slides.forEach(slide => container.appendChild(slide));
 
-      // Navigation buttons
       const prev = document.createElement("a");
       prev.className = "prev";
       prev.innerHTML = "&#10094;";
@@ -209,16 +255,14 @@
       showSlide(index);
     }
 
-    // Initialize all project slideshows
-    for (let i = 0; i < Object.keys(projectImages).length; i++) {
+    // Initialize all slideshows
+    for (let i = 0; i < Object.keys(projectMedia).length; i++) {
       const container = document.querySelector(`#project-${i} .slideshow-container`);
-      if (container && projectImages[i]) {
-        setupSlideshow(container, projectImages[i]);
+      if (container && projectMedia[i]) {
+        setupSlideshow(container, projectMedia[i]);
       }
     }
   </script>
-
-
 
 </body>
 </html>
